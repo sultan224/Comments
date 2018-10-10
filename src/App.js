@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './index.css';
+import ReactDOM from "react-dom";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+class LikeButton extends Component{
+  constructor(){
+    super()
+      this.state = {isLiked:false}
+  }
+
+    handleClickOnLikeButton(){
+    this.setState({
+        isLiked:!this.state.isLiked
+    })
+    }
+
+  render(){
+    return(
+        <button onClick={this.handleClickOnLikeButton.bind(this)}>
+            {this.state.isLiked?'取消':'点赞'}👍
+        </button>
+    )
   }
 }
 
-export default App;
+ReactDOM.render(
+    <LikeButton />
+)
